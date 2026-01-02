@@ -6,6 +6,7 @@ const Item1 = {
     name: "test",
     price: 50,
     quality: 1,
+    authors: "author",
     img: "https://www.freepik.com/free-photos-vectors/happy-cat"
 }
 
@@ -14,6 +15,7 @@ const Item2 = {
     name: "second Item",
     price: 21,
     quality: 1,
+    authors: "author",
     img: "https://www.freepik.com/free-photos-vectors/happy-cat"
 }
 
