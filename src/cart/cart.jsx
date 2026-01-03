@@ -1,5 +1,4 @@
-export default function createCart() {
-    let items = [];
+export default function CartActions({items, setItems}) {
     const taxPercent = 0.07;
 
     function findIndexById(itemId) {
@@ -7,32 +6,41 @@ export default function createCart() {
     }
 
     return {
-        items,
+        taxPercent,
         addItem(item) {
             const index = findIndexById(item.id);
+
             if (index !== -1) {
-                items[index].quality += item.quality;
+                setItems(prevItems =>
+                    prevItems.map((it, i) => i === index ? {...it, quality: it.quality + item.quality} : it))
             } else {
-                items.push({...item})
+                setItems(prevItems => [...prevItems, item]);
             }
         },
         removeItem(itemId) {
             const index = findIndexById(itemId);
-            if (index !== -1) items.splice(index, 1);
+            if (index !== -1) {
+                setItems(prevItems => prevItems.filter(it => it.id !== itemId));
+            }
         },
         increment(itemId) {
             const index = findIndexById(itemId);
-            if (index !== -1) items[index].quality += 1;
+            if (index !== -1) {
+                setItems(prevItems => prevItems.map((it, i) => i === index ? {...it, quality: it.quality + 1} : it))
+            }
         },
         decrement(itemId) {
             const index = findIndexById(itemId);
-            if (index !== -1) {
-                if (items[index].quality === 1) {
-                    this.removeItem(itemId)
-                } else {
-                    items[index].quality -= 1;
-                }
-            }
+            setItems(prevItems => {
+                const updated = prevItems.map((it, i) => {
+                    if (i === index) {
+                        return {...it, quality: it.quality - 1};
+                    }
+                    return it;
+                });
+                return updated.filter(it => it.quality > 0);
+            });
+
         },
         totalItems() {
             let total = 0;
@@ -55,6 +63,10 @@ export default function createCart() {
             } else {
                 return 20;
             }
+        },
+        pricePerBook(itemId) {
+            const item = items.find(item => item.id === itemId);
+            return item ? item.price * item.quality : 0;
         },
         totalPrice() {
             return this.subtotal() + this.tax() + this.shipping();

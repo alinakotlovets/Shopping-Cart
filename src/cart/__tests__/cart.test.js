@@ -1,5 +1,5 @@
 import {describe, it, expect} from "vitest";
-import createCart from "../cart.js";
+import CartActions from "../cart.jsx";
 
 const Item1 = {
     id: 1,
@@ -21,13 +21,13 @@ const Item2 = {
 
 describe("cart functional", () => {
     it("add first item to cart", () => {
-        const cart = createCart();
+        const cart = CartActions();
         cart.addItem(Item1);
         expect(cart.items[0].name).toBe("test")
     });
 
     it("remove item from cart", () => {
-        const cart = createCart();
+        const cart = CartActions();
         cart.addItem(Item1);
         expect(cart.items[0].name).toBe("test");
         cart.removeItem(Item1.id);
@@ -35,7 +35,7 @@ describe("cart functional", () => {
     });
 
     it("add multiple items to cart", () => {
-        const cart = createCart();
+        const cart = CartActions();
         cart.addItem(Item1);
         cart.addItem(Item2);
         expect(cart.items.length).toBe(2);
@@ -44,7 +44,7 @@ describe("cart functional", () => {
     });
 
     it("remove one item from multiple items", () => {
-        const cart = createCart();
+        const cart = CartActions();
         cart.addItem(Item1);
         cart.addItem(Item2);
         cart.removeItem(Item1.id);
@@ -53,7 +53,7 @@ describe("cart functional", () => {
     });
 
     it("remove non-existent item does nothing", () => {
-        const cart = createCart();
+        const cart = CartActions();
         cart.addItem(Item1);
         cart.removeItem(999);
         expect(cart.items.length).toBe(1);
@@ -61,7 +61,7 @@ describe("cart functional", () => {
     });
 
     it("add same item twice and it add quality", () => {
-        const cart = createCart();
+        const cart = CartActions();
         cart.addItem(Item1);
         cart.addItem(Item1);
         expect(cart.items.length).toBe(1);
@@ -69,7 +69,7 @@ describe("cart functional", () => {
     });
 
     it("when increment to quality add 1", () => {
-        const cart = createCart();
+        const cart = CartActions();
         cart.addItem(Item1);
         expect(cart.items[0].quality).toBe(1);
         cart.increment(cart.items[0].id);
@@ -77,7 +77,7 @@ describe("cart functional", () => {
     });
 
     it("increment quality multiple times", () => {
-        const cart = createCart();
+        const cart = CartActions();
         cart.addItem(Item1);
         cart.increment(cart.items[0].id);
         cart.increment(cart.items[0].id);
@@ -86,7 +86,7 @@ describe("cart functional", () => {
     });
 
     it("when decrement to quality subtract 1", () => {
-        const cart = createCart();
+        const cart = CartActions();
         cart.addItem(Item1);
         expect(cart.items[0].quality).toBe(1);
         cart.increment(cart.items[0].id);
@@ -96,7 +96,7 @@ describe("cart functional", () => {
     });
 
     it("decrement quality multiple times", () => {
-        const cart = createCart();
+        const cart = CartActions();
         cart.addItem(Item1);
         cart.increment(cart.items[0].id);
         cart.increment(cart.items[0].id);
@@ -106,7 +106,7 @@ describe("cart functional", () => {
     });
 
     it("when decrement item with quality 1 it delete item", () => {
-        const cart = createCart();
+        const cart = CartActions();
         cart.addItem(Item1);
         expect(cart.items[0].quality).toBe(1);
         cart.decrement(cart.items[0].id);
@@ -115,20 +115,20 @@ describe("cart functional", () => {
 
 
     it("total items in cart with 1 item with quality 1", () => {
-        const cart = createCart();
+        const cart = CartActions();
         cart.addItem(Item1);
         let total = cart.totalItems();
         expect(total).toBe(1);
     });
 
     it("total items with empty cart", () => {
-        const cart = createCart();
+        const cart = CartActions();
         let total = cart.totalItems();
         expect(total).toBe(0);
     });
 
     it("total items with multiple items", () => {
-        const cart = createCart();
+        const cart = CartActions();
         cart.addItem(Item1);
         cart.addItem(Item2);
         let total = cart.totalItems();
@@ -136,7 +136,7 @@ describe("cart functional", () => {
     });
 
     it("total items with multiple items and added quality", () => {
-        const cart = createCart();
+        const cart = CartActions();
         cart.addItem(Item1);
         cart.increment(cart.items[0].id);
         cart.increment(cart.items[0].id);
@@ -146,7 +146,7 @@ describe("cart functional", () => {
     });
 
     it("total items with adding quality", () => {
-        const cart = createCart();
+        const cart = CartActions();
         cart.addItem(Item1);
         expect(cart.totalItems()).toBe(1);
         cart.increment(cart.items[0].id);
@@ -156,7 +156,7 @@ describe("cart functional", () => {
     });
 
     it("total items with removing quality", () => {
-        const cart = createCart();
+        const cart = CartActions();
         cart.addItem(Item1);
         cart.increment(cart.items[0].id);
         cart.increment(cart.items[0].id);
@@ -168,20 +168,20 @@ describe("cart functional", () => {
     });
 
     it("subtotal of 1 item with  quality 1", () => {
-        const cart = createCart();
+        const cart = CartActions();
         cart.addItem(Item1);
         expect(cart.subtotal()).toBe(50);
     });
 
     it("subtotal of 1 item with quality more then 1", () => {
-        const cart = createCart();
+        const cart = CartActions();
         cart.addItem(Item1);
         cart.addItem(Item1);
         expect(cart.subtotal()).toBe(100);
     });
 
     it("subtotal of  multiple items with quality more then 1", () => {
-        const cart = createCart();
+        const cart = CartActions();
         cart.addItem(Item1);
         cart.addItem(Item1);
         cart.addItem(Item2)
@@ -189,14 +189,14 @@ describe("cart functional", () => {
     });
 
     it("calculating tax for subtotal", () => {
-        const cart = createCart();
+        const cart = CartActions();
         cart.addItem(Item1);
         cart.addItem(Item1);
         expect(cart.tax()).toBe(7);
     });
 
     it("calculating shipping if subtotal>=500", () => {
-        const cart = createCart();
+        const cart = CartActions();
         cart.addItem(Item1);
         cart.addItem(Item1);
         cart.addItem(Item1);
@@ -212,14 +212,14 @@ describe("cart functional", () => {
 
 
     it("calculating shipping if subtotal<500", () => {
-        const cart = createCart();
+        const cart = CartActions();
         cart.addItem(Item1);
         cart.addItem(Item1);
         expect(cart.shipping()).toBe(20);
     });
 
     it("calculating total price", () => {
-        const cart = createCart();
+        const cart = CartActions();
         cart.addItem(Item1);
         cart.addItem(Item1);
         expect(cart.totalPrice()).toBe(127);

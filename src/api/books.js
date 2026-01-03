@@ -17,7 +17,8 @@ async function getBooks() {
         price: hashStringToNumber(item.work.key, 15, 30),
         quality: 1,
         author: item.work.author_names[0],
-        img: item.work.cover_id ? `https://covers.openlibrary.org/b/id/${item.work.cover_id}.jpg` : "fallback_url"
+        rating: hashStringToNumber(item.work.key, 3, 5),
+        img: item.work.cover_id ? `https://covers.openlibrary.org/b/id/${item.work.cover_id}-M.jpg` : "fallback_url"
     }))
 
     return books;
