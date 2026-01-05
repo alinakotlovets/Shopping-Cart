@@ -4,7 +4,10 @@ function hashStringToNumber(str, min, max) {
         hash = str.charCodeAt(i) + ((hash << 5) - hash);
     }
     hash = Math.abs(hash);
-    return (hash % (max - min + 1)) + min;
+
+    const scaled = (hash % 1000) / 1000;
+    const number = min + (max - min) * scaled;
+    return Math.round(number * 10) / 10;
 }
 
 export default hashStringToNumber;

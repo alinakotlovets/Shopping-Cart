@@ -10,14 +10,19 @@ async function getBooks() {
         throw new Error("NotFound");
     }
 
+    const getCleanId = (item) => {
+        return item.replace("/works/", "");
+    }
+
     let books = [];
     data.reading_log_entries.forEach((item) => books.push({
-        id: item.work.key,
+        id: getCleanId(item.work.key),
+        editionId: item.work.edition_key[0],
         name: item.work.title,
-        price: hashStringToNumber(item.work.key, 15, 30),
+        price: Math.round(hashStringToNumber(item.work.key, 15, 30)),
         quality: 1,
         author: item.work.author_names[0],
-        rating: hashStringToNumber(item.work.key, 3, 5),
+        rating: hashStringToNumber(item.work.key, 3.5, 5.0),
         img: item.work.cover_id ? `https://covers.openlibrary.org/b/id/${item.work.cover_id}-M.jpg` : "fallback_url"
     }))
 

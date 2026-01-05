@@ -1,8 +1,9 @@
 import App from "./App.jsx";
-import ErrorPage from "./ErrorPage";
-import HomePage from "./HomePage.jsx";
-import ShopPage from "./ShopPage.jsx";
-import CartPage from "./CartPage.jsx";
+import ErrorPage from "./pages/ErrorPage.jsx";
+import HomePage from "./pages/HomePage.jsx";
+import ShopPage from "./pages/ShopPage.jsx";
+import CartPage from "./pages/CartPage.jsx";
+import BookPage from "./pages/BookPage.jsx";
 
 
 const routes = [
@@ -14,6 +15,7 @@ const routes = [
             {index: true, element: <HomePage/>},
             {path: "shop", element: <ShopPage/>},
             {path: "cart", element: <CartPage/>},
+            {path: "book/:id", element: <BookPage/>}
         ],
     }
 ]

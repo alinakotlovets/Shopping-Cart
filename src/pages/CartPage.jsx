@@ -1,13 +1,18 @@
-import {useOutletContext} from "react-router-dom";
+import {useOutletContext, useNavigate} from "react-router-dom";
 
 function CartPage() {
     const {items, cart} = useOutletContext();
+    const navigate = useNavigate();
 
     const renderCartItems = () => {
         return (
             items.map((book) => {
                 return (
-                    <div key={book.id}>
+                    <div
+                        key={book.id}
+                        onClick={() => navigate(`/book/${book.id}`)}
+                        style={{cursor: "pointer"}}
+                    >
                         <img src={book.img} alt={book.name}/>
                         <h2>{book.name}</h2>
                         <h3>Author: {book.author}</h3>

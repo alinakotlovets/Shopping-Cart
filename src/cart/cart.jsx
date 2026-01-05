@@ -69,7 +69,7 @@ export default function CartActions({items, setItems}) {
             return item ? item.price * item.quality : 0;
         },
         totalPrice() {
-            return this.subtotal() + this.tax() + this.shipping();
+            return Math.round((this.subtotal() + this.tax() + this.shipping()) * 100) / 100;
         }
     }
 }
