@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+    color-scheme: light dark;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+
+    --green: rgb(8, 109, 61);
+    --background-white: rgb(255, 255, 255);
+    --background-grey: rgb(240, 245, 244);
+    --black: rgb(0, 0, 0);
+    --dark-grey: rgb(89, 89, 89);
+    --transition: 300ms ease-in-out;
+}
+
+a {
+    font-weight: 500;
+    color: var(--black);
+    text-decoration: inherit;
+}
+
+a:hover {
+    color: var(--green);
+}
+
+body {
+    margin: 0;
+    display: flex;
+    min-width: 320px;
+    min-height: 100vh;
+    color: var(--black);
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    background-color: var(--background-white);
+}
+
+h1 {
+    font-size: 3.2em;
+    line-height: 1.1;
+}
+
+h1, h2, h3, h4, p {
+    margin: 0;
+}
+
+h4 {
+    font-size: 16px;
+}
+
+h2, h3, h4 {
+    font-weight: 500;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+
+input {
+    border: 1px solid rgb(208, 226, 223);
+}
+
+select {
+    background-color: var(--background-white);
+    color: var(--black);
+    padding: 3px;
+    border: 1px solid rgb(208, 226, 223);
+}
+
+input:focus,
+input:hover {
+    border: none;
+    outline: 1px solid var(--green);
+}
+
+button {
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: var(--green);
+    cursor: pointer;
+    transition: border-color 0.25s;
+}
+
+button:hover {
+    border-color: var(--background-white);
+}
+
+button:focus,
+button:focus-visible {
+    outline: 1px auto -webkit-focus-ring-color;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: var(--black) !important;
+    background-color: var(--background-grey);
+    border-radius: 40px;
+    transition: color var(--transition);
+}
+
+.swiper-navigation-icon {
+    width: 15px !important;
+    height: 15px !important;
+}
+
+.swiper-button-next:focus,
+.swiper-button-prev:focus,
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+    color: var(--green) !important;
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        color: #213547;
+        background-color: #ffffff;
+    }
+
+    button {
+        background-color: #f9f9f9;
+    }
+}

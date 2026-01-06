@@ -9,7 +9,9 @@ async function getBookWork(book) {
     }
 
     return {
-        description: data.description.value ? data.description.value : data.description
+        description: typeof data.description === "string"
+            ? data.description
+            : data.description?.value || null
     }
 }
 

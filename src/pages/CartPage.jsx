@@ -18,11 +18,23 @@ function CartPage() {
                         <h3>Author: {book.author}</h3>
                         <h3>Price: {cart.pricePerBook(book.id)}</h3>
                         <div>
-                            <button onClick={() => cart.decrement(book.id)}> -</button>
+                            <button onClick={(e) => {
+                                e.stopPropagation();
+                                cart.decrement(book.id)
+                            }}> -
+                            </button>
                             <h3>{book.quality}</h3>
-                            <button onClick={() => cart.increment(book.id)}> +</button>
+                            <button onClick={(e) => {
+                                e.stopPropagation();
+                                cart.increment(book.id)
+                            }}> +
+                            </button>
                         </div>
-                        <button onClick={() => cart.removeItem(book.id)}>Delete</button>
+                        <button onClick={(e) => {
+                            e.stopPropagation();
+                            cart.removeItem(book.id)
+                        }}>Delete
+                        </button>
                     </div>
                 )
             })

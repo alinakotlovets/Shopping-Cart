@@ -1,5 +1,10 @@
 import {Link, useNavigate} from "react-router-dom";
 import {useState} from "react";
+import bookShopLogo from "./images/bookShop.png"
+import cartIcon from "./images/cartIcon.svg"
+import searchIcon from "./images/searchIcon.svg"
+import common from "./style/common.module.css"
+import navBar from "./style/navBar.module.css"
 
 function NavBar({cart, books}) {
     const [searchInput, setSearchInput] = useState("");
@@ -28,8 +33,13 @@ function NavBar({cart, books}) {
 
     return (
         <>
-            <nav>
-                <ul>
+            <nav className={`${common.flexSpaceBetween} ${navBar.navBarBox} `}>
+                <ul className={`${common.flexCenter} ${common.flex} ${common.gap32}`}>
+                    <li>
+                        <Link to="/">
+                            <img className={`${navBar.navLogo}`} src={bookShopLogo} alt="book shop logo"/>
+                        </Link>
+                    </li>
                     <li>
                         <Link to="/">Home</Link>
                     </li>
@@ -37,37 +47,53 @@ function NavBar({cart, books}) {
                         <Link to="/shop">Shop</Link>
                     </li>
                 </ul>
-                <div>
+                <div className={`${common.flexCenter} ${common.flex} ${common.with100}`}>
                     <input
+                        className={`${navBar.navInput}`}
                         type="text"
                         value={searchInput}
                         onChange={(e) => setSearchInput(e.target.value)}
+                        placeholder="Write book title or author"
                     />
-                    <button onClick={(e) => searchOnClick(e)}>Search</button>
-                    <button onClick={() => setSearchFound(null)}>Cansel</button>
+                    <button className={`${navBar.searchBtn}`} onClick={(e) => searchOnClick(e)}>
+                        <img src={searchIcon} alt='search icon button'/>
+                    </button>
                 </div>
                 <div>
-                    <Link to="/cart">Cart</Link>
-                    <p>{cart.totalItems()}</p>
+                    <Link to="/cart">
+                        <div className={`${navBar.cartButtonBox}`}>
+                            <img src={cartIcon} alt="cart icon button"/>
+                            <>
+                                {cart.totalItems() > 0 ?
+                                    (
+                                        <div className={`${navBar.cartButtonTextBg}`}>
+                                            <p className={`${navBar.cartButtonText}`}>{cart.totalItems()}</p>
+                                        </div>
+                                    ) : null}
+                            </>
+                        </div>
+                    </Link>
                 </div>
             </nav>
             <div>
                 {searchFound !== null && searchFound.length > 0 ?
-                    (<> {searchFound.map((item) => {
-                            return (
-                                <>
-                                    <div
-                                        onClick={(e) => foundClick(e, item.id)}
-                                        style={{cursor: "pointer"}}
-                                    >
-                                        <img src={item.img} alt={item.name}/>
-                                        <h3>{item.name}</h3>
-                                        <h3>{item.author}</h3>
-                                    </div>
-                                </>
-                            )
-                        })
-                        }
+                    (<>
+                            <button onClick={() => setSearchFound(null)}>Cansel</button>
+                            {searchFound.map((item) => {
+                                return (
+                                    <>
+                                        <div
+                                            onClick={(e) => foundClick(e, item.id)}
+                                            style={{cursor: "pointer"}}
+                                        >
+                                            <img src={item.img} alt={item.name}/>
+                                            <h3>{item.name}</h3>
+                                            <h3>{item.author}</h3>
+                                        </div>
+                                    </>
+                                )
+                            })
+                            }
                         </>
                     ) : searchFound !== null && searchFound.length === 0 ? (<h2>Not found</h2>) : null}
             </div>

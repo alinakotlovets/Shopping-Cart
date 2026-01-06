@@ -1,5 +1,7 @@
 import {useOutletContext, useNavigate} from "react-router-dom";
 import {useState} from "react";
+import common from "../style/common.module.css"
+import bookCart from "../style/bookCart.module.css"
 
 function ShopPage() {
     const {books, loading, error, cart} = useOutletContext();
@@ -26,20 +28,25 @@ function ShopPage() {
             sortedBooks.map((book) => {
                 return (
                     <div
+                        className={`${common.padding14} ${common.borderGrey1px} ${common.flexCenter} ${common.flex} ${common.flexColumn} ${bookCart.cartMinHeight} ${bookCart.cartBox}`}
                         key={book.id}
                         onClick={() => navigate(`/book/${book.id}`)}
                         style={{cursor: "pointer"}}
                     >
-                        <img src={book.img} alt={book.name}/>
-                        <h2>{book.name}</h2>
-                        <h3>Author: {book.author}</h3>
-                        <h3>Price: {book.price}</h3>
-                        <h3>Rating: {book.rating}</h3>
-                        <button onClick={(e) => {
-                            e.stopPropagation();
-                            cart.addItem(book)
-                        }}>Add to cart
-                        </button>
+                        <img className={`${bookCart.bookImg}`} src={book.img} alt={book.name}/>
+                        <div className={`${common.textAlignStart} ${common.with100}`}>
+                            <h4 className={`${common.marginTop10} ${common.textS}`}>{book.name}</h4>
+                            <h4 className={`${common.marginTop5} ${common.textGrey} ${common.textS}`}>{book.author}</h4>
+                            <h4 className={`${common.marginTop5} ${common.textGrey} ${common.textS}`}>Rating: {book.rating}</h4>
+                        </div>
+                        <div className={`${common.flexSpaceBetween} ${common.with100} ${common.marginTop10}`}>
+                            <h3 className={`${common.textM}`}>{book.price}$</h3>
+                            <button onClick={(e) => {
+                                e.stopPropagation();
+                                cart.addItem(book)
+                            }}>Buy
+                            </button>
+                        </div>
                     </div>
                 )
             })
@@ -47,12 +54,10 @@ function ShopPage() {
     }
     return (
         <>
-            <h1>Shop</h1>
-            <label htmlFor="sortBooks">Sort by:</label>
-            {loading && (<h1>Loading...</h1>)}
-            {!loading && error && (<h1>{error.status}</h1>)}
-            {!loading && !error && books &&
-                (<div>
+            <div className={`${common.flexSpaceBetween} ${common.padding040} ${common.marginTop20}`}>
+                <p className={`${common.textS} ${common.textGrey}`}>{sortedBooks.length} book available</p>
+                <div className={`${common.flexCenter} ${common.flex} ${common.gap32}`}>
+                    <label htmlFor="sortBooks">Sort by:</label>
                     <select id="sortBooks" name="Sort books" onChange={(e) => handelSortChange(e)}>
                         <option value="default">Default</option>
                         <option value="bestScore">Best score</option>
@@ -60,6 +65,12 @@ function ShopPage() {
                         <option value="lowestPrice">Lowest price</option>
                         <option value="higestPrice">Highest price</option>
                     </select>
+                </div>
+            </div>
+            {loading && (<h1>Loading...</h1>)}
+            {!loading && error && (<h1>{error.status}</h1>)}
+            {!loading && !error && books &&
+                (<div className={`${common.gridColumns4} ${common.marginTop20} ${common.padding040}`}>
                     {renderBookList()}
                 </div>)}
         </>

@@ -9,7 +9,7 @@ async function getBookEdition(book) {
     }
 
     return {
-        pages: data.number_of_pages,
+        pages: data.number_of_pages ? data.number_of_pages : data.pagination || null,
         date: data.publish_date,
         publishers: data.publishers,
     }

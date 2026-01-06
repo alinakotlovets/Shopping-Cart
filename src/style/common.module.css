@@ -1,0 +1,98 @@
+.flex {
+    display: flex;
+}
+
+.flexCenter {
+    align-items: center;
+    justify-content: center;
+}
+
+.flexStart {
+    align-items: start;
+    justify-content: center;
+}
+
+.flexColumn {
+    flex-direction: column;
+}
+
+.flexSpaceBetween {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.gap32 {
+    gap: 32px;
+}
+
+.with100 {
+    width: 100%;
+}
+
+.height100 {
+    height: 100%;
+}
+
+.padding040 {
+    padding: 0 40px;
+    box-sizing: border-box;
+}
+
+.padding14 {
+    padding: 14px;
+}
+
+.marginTop20 {
+    margin-top: 20px;
+}
+
+.marginTop10 {
+    margin-top: 10px;
+}
+
+.marginTop5 {
+    margin-top: 5px;
+}
+
+.marginTop30 {
+    margin-top: 30px;
+}
+
+
+.overflowXHidden {
+    overflow-x: hidden !important;
+}
+
+.gridColumns4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: center;
+    align-items: center;
+}
+
+.borderGrey1px {
+    border: 1px solid var(--background-grey);
+}
+
+.textAlignStart {
+    text-align: start;
+}
+
+.textGrey {
+    color: var(--dark-grey);
+}
+
+.textS {
+    font-size: 16px;
+}
+
+.textXS {
+    font-size: 12px;
+}
+
+.textM {
+    font-size: 24px;
+}
+
