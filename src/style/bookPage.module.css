@@ -4,11 +4,43 @@
 }
 
 .bookDescription {
-    max-width: 550px;
+    text-align: justify;
+    text-justify: inter-word;
+    font-weight: 400;
+    padding-right: 100px;
+    overflow: hidden;
+    transition: max-height var(--transition);
+}
+
+
+.descriptionHidden {
+    max-height: 3em;
+}
+
+.descriptionExpanded {
+    max-height: 100%;
+}
+
+
+.descriptionHidden {
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
+.descriptionBox {
+    position: relative;
+}
+
+.showMore {
+    position: absolute;
+    right: 0;
+    bottom: 0;
 }
 
 .leftBox {
-    display: block;
+    display: flex;
+    gap: 40px;
     width: calc(-358px + 100vw);
 }
 
@@ -38,5 +70,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    text-align: end;
     padding: 4px 10px;
 }

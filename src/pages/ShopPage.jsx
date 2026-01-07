@@ -1,7 +1,7 @@
 import {useOutletContext, useNavigate} from "react-router-dom";
 import {useState} from "react";
 import common from "../style/common.module.css"
-import bookCart from "../style/bookCart.module.css"
+import bookCart from "../style/bookCard.module.css"
 
 function ShopPage() {
     const {books, loading, error, cart} = useOutletContext();
@@ -39,7 +39,8 @@ function ShopPage() {
                             <h4 className={`${common.marginTop5} ${common.textGrey} ${common.textS}`}>{book.author}</h4>
                             <h4 className={`${common.marginTop5} ${common.textGrey} ${common.textS}`}>Rating: {book.rating}</h4>
                         </div>
-                        <div className={`${common.flexSpaceBetween} ${common.with100} ${common.marginTop10}`}>
+                        <div
+                            className={` ${common.flex} ${common.flexSpaceBetween} ${common.with100} ${common.marginTop10}`}>
                             <h3 className={`${common.textM}`}>{book.price}$</h3>
                             <button onClick={(e) => {
                                 e.stopPropagation();
@@ -54,7 +55,7 @@ function ShopPage() {
     }
     return (
         <>
-            <div className={`${common.flexSpaceBetween} ${common.padding040} ${common.marginTop20}`}>
+            <div className={`${common.flex} ${common.flexSpaceBetween} ${common.padding040} ${common.marginTop20}`}>
                 <p className={`${common.textS} ${common.textGrey}`}>{sortedBooks.length} book available</p>
                 <div className={`${common.flexCenter} ${common.flex} ${common.gap32}`}>
                     <label htmlFor="sortBooks">Sort by:</label>

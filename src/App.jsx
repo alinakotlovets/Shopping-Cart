@@ -1,5 +1,6 @@
 import './style/App.css'
 import useBooks from "./utils/useBooks.jsx";
+import Footer from "./Footer.jsx";
 import NavBar from "./NavBar.jsx";
 import CartActions from "./cart/cart.jsx"
 import {Outlet} from "react-router-dom";
@@ -19,6 +20,7 @@ function App() {
         <>
             <NavBar cart={cart} books={books}/>
             <Outlet context={{books, loading, error, cart, items}}/>
+            <Footer/>
         </>
     );
 }

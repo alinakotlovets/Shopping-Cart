@@ -17,8 +17,6 @@
 }
 
 .flexSpaceBetween {
-    display: flex;
-    align-items: center;
     justify-content: space-between;
 }
 
@@ -60,7 +58,6 @@
     margin-top: 30px;
 }
 
-
 .overflowXHidden {
     overflow-x: hidden !important;
 }
@@ -96,3 +93,20 @@
     font-size: 24px;
 }
 
+
+.buttonWhite {
+    background-color: rgb(240, 245, 244);
+    border: 1px solid rgb(208, 226, 223);
+    color: var(--green);
+    transition: background-color var(--transition);
+}
+
+.buttonWhite:focus,
+.buttonWhite:hover {
+    background-color: rgb(208, 226, 223);
+}
+
+
+.maxHeight600 {
+    max-height: 600px;
+}

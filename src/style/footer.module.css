@@ -1,0 +1,44 @@
+.footerBox {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    flex-direction: column;
+    margin-top: 30px;
+    padding: 0 40px;
+    text-align: start;
+}
+
+.footerBox:before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: rgb(208, 226, 223);
+    margin-bottom: 30px;
+}
+
+.socialBox {
+    display: flex;
+    justify-content: start;
+    margin-top: 20px;
+    align-items: center;
+    gap: 15px;
+}
+
+.footerTextBox {
+    min-width: calc((100% / 3) - 180px);
+    padding: 0 60px;
+}
+
+
+.footerText {
+    color: var(--dark-grey);
+    transition: color var(--transition);
+    cursor: pointer;
+}
+
+.footerText:focus,
+.footerText:hover {
+    color: var(--green);
+}

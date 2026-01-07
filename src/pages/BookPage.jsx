@@ -14,7 +14,17 @@ function BookPage() {
 
     const [edition, setEdition] = useState({data: null, error: null, loading: true});
     const [work, setWork] = useState({data: null, error: null, loading: true});
+    const [expanded, setExpanded] = useState(false);
 
+
+    const showDescription = (e) => {
+        e.preventDefault();
+        if (expanded) {
+            setExpanded(false)
+        } else {
+            setExpanded(true);
+        }
+    }
 
     useEffect(() => {
         console.log(id);
@@ -40,19 +50,30 @@ function BookPage() {
     return (
         <div key={book.id} className={`${common.marginTop30} ${common.padding14}`}>
             <div className={`${common.flexStart} ${common.flex} ${common.textAlignStart} ${common.gap32}`}>
-                <div className={`${common.leftBox}`}></div>
-                <img className={`${bookPage.bookPageImg}`} src={book.img} alt={book.name}/>
-                <div>
+                <div
+                    className={`${bookPage.leftBox} `}>
+                    <img className={`${bookPage.bookPageImg}`} src={book.img} alt={book.name}/>
                     <div>
-                        <h2>{book.name}</h2>
-                        <h3 className={`${common.marginTop5}`}>Author: {book.author}</h3>
-                    </div>
-                    <div className={`${common.marginTop30}`}>
-                        {work.loading ? <p>Loading description...</p> :
-                            work.error ?
-                                <h4>{work.error instanceof Error ? work.error.message : String(work.error)}</h4>
-                                :
-                                <h4 className={`${bookPage.bookDescription}`}>Description: {work.data.description || null}</h4>}
+                        <div>
+                            <h2>{book.name}</h2>
+                            <h3 className={`${common.marginTop5}`}>Author: {book.author}</h3>
+                        </div>
+                        <div className={`${common.marginTop30}`}>
+                            {work.loading ? <p>Loading description...</p> :
+                                work.error ?
+                                    <h4>{work.error instanceof Error ? work.error.message : String(work.error)}</h4>
+                                    :
+                                    work.data.description ? (
+                                        <div className={`${bookPage.descriptionBox}`}>
+                                            <h4 className={`${bookPage.bookDescription} ${expanded ? bookPage.descriptionExpanded : bookPage.descriptionHidden}`}>Description: {work.data.description}</h4>
+                                            <span
+                                                className={`${bookPage.showMore}`}
+                                                onClick={(e) => showDescription(e)}
+                                            >Show {expanded ? "less" : "more"}...
+                                            </span>
+                                        </div>
+                                    ) : null}
+                        </div>
                     </div>
                 </div>
                 <div className={`${bookPage.rightBox}`}>
@@ -73,21 +94,27 @@ function BookPage() {
                             edition.error ?
                                 <p>{edition.error instanceof Error ? edition.error.message : String(edition.error)}</p> :
                                 <>
-                                    <div
-                                        className={`${bookPage.rightBoxTextBox}`}>
-                                        <h4>Pages: </h4>
-                                        <h4>{edition.data.pages}</h4>
-                                    </div>
-                                    <div
-                                        className={`${bookPage.rightBoxTextBox}`}>
-                                        <h4>Publish date: </h4>
-                                        <h4>{edition.data.date} </h4>
-                                    </div>
-                                    <div
-                                        className={`${bookPage.rightBoxTextBox}`}>
-                                        <h4>Publishers: </h4>
-                                        <h4>{edition.data.publishers.join(", ")}</h4>
-                                    </div>
+                                    {edition.data.pages &&
+                                        (<div
+                                            className={`${bookPage.rightBoxTextBox}`}>
+                                            <h4>Pages: </h4>
+                                            <h4>{edition.data.pages}</h4>
+                                        </div>)
+                                    }
+                                    {edition.data.date &&
+                                        (<div
+                                            className={`${bookPage.rightBoxTextBox}`}>
+                                            <h4>Publish date: </h4>
+                                            <h4>{edition.data.date} </h4>
+                                        </div>)
+                                    }
+                                    {edition.data.publishers.length > 0 &&
+                                        (<div
+                                            className={`${bookPage.rightBoxTextBox}`}>
+                                            <h4>Publishers: </h4>
+                                            <h4>{edition.data.publishers.join(", ")}</h4>
+                                        </div>)
+                                    }
                                 </>}
                     </div>
                 </div>

@@ -33,7 +33,7 @@ function NavBar({cart, books}) {
 
     return (
         <>
-            <nav className={`${common.flexSpaceBetween} ${navBar.navBarBox} `}>
+            <nav className={`${common.flex} ${common.flexSpaceBetween} ${navBar.navBarBox} `}>
                 <ul className={`${common.flexCenter} ${common.flex} ${common.gap32}`}>
                     <li>
                         <Link to="/">

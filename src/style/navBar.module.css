@@ -29,6 +29,7 @@
     padding: 0 40px;
     background-color: var(--background-grey);
     box-sizing: border-box;
+    align-items: center;
 }
 
 .navLogo {
