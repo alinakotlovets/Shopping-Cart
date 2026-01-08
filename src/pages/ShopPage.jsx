@@ -64,7 +64,7 @@ function ShopPage() {
                         <option value="bestScore">Best score</option>
                         <option value="leastScore">Least score</option>
                         <option value="lowestPrice">Lowest price</option>
-                        <option value="higestPrice">Highest price</option>
+                        <option value="highestPrice">Highest price</option>
                     </select>
                 </div>
             </div>
