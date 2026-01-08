@@ -39,6 +39,13 @@ function HomePage() {
                 768: {
                     slidesPerView: 3,
                 },
+                580: {
+                    slidesPerView: 2,
+                },
+                0: {
+                    slidesPerView: 1,
+                },
+
             },
         });
     }, [books]);
@@ -91,21 +98,21 @@ function HomePage() {
                         <div className="swiperBanner">
                             <div className="swiper-wrapper">
                                 <div className={`swiper-slide`}>
-                                    <img className={`${common.with100} ${common.maxHeight600}`}
+                                    <img className={`${common.with100} ${common.maxHeight700}`}
                                          src={BannerSale1}
                                          onClick={() => navigate(`/shop`)}
                                          style={{cursor: "pointer"}}
                                          alt="banner about sale"/>
                                 </div>
                                 <div className={`swiper-slide`}>
-                                    <img className={`${common.with100} ${common.maxHeight600}`}
+                                    <img className={`${common.with100} ${common.maxHeight700}`}
                                          src={BannerSale2}
                                          onClick={() => navigate(`/shop`)}
                                          style={{cursor: "pointer"}}
                                          alt="banner about sale"/>
                                 </div>
                                 <div className={`swiper-slide`}>
-                                    <img className={`${common.with100} ${common.maxHeight600}`}
+                                    <img className={`${common.with100} ${common.maxHeight700}`}
                                          src={BannerSale3}
                                          onClick={() => navigate(`/shop`)}
                                          style={{cursor: "pointer"}}

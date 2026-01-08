@@ -39,7 +39,7 @@ function CartPage() {
                                     </button>
                                 </div>
                                 <h4 className={`${common.textGrey} ${common.marginTop5}`}>{book.author}</h4>
-                                <div className={`${common.flex} ${common.flexSpaceBetween} ${common.marginTop30}`}>
+                                <div className={`${cartPage.bookBoxPricingBox}`}>
                                     <div className={`${cartPage.availableBox}`}>
                                         <img src={availableIcon} alt="available icon"/>
                                         <p className={`${common.textXS}`}>Available</p>
@@ -112,7 +112,7 @@ function CartPage() {
     return (
         <>
             <div className={`${cartPage.shippingInfo}`}>
-                <h4>Shipping is free if your subtotal 500 or more!</h4>
+                <h4 className={`${cartPage.shippingInfoText}`}>Shipping is free if your subtotal 500 or more!</h4>
             </div>
             <div
                 className={`${common.flex} ${common.flexCenter} ${common.padding040} ${common.marginTop30} ${common.with100}`}>
@@ -121,7 +121,7 @@ function CartPage() {
                     {items && items.length > 0 ? (
                         <div className={`${common.flex} ${common.flexCenter} ${common.flexColumn} ${common.gap32}`}>
                             <div
-                                className={`${common.flex} ${common.flexColumn} ${common.flexCenter} ${common.with100}`}>
+                                className={`${cartPage.booksInCartBox}`}>
                                 {renderCartItems()}
                             </div>
                             <div className={`${cartPage.pricingBox}`}>

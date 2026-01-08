@@ -43,13 +43,13 @@ function BookPage() {
 
     if (!book) return (
         <div className={`${common.flexCenter} ${common.flex} ${common.padding040} ${common.height100}`}>
-            <h1>Not Found</h1>
+            <h2>Not Found</h2>
         </div>
     )
 
     return (
         <div key={book.id} className={`${common.marginTop30} ${common.padding14}`}>
-            <div className={`${common.flexStart} ${common.flex} ${common.textAlignStart} ${common.gap32}`}>
+            <div className={`${bookPage.bookPageBox}`}>
                 <div
                     className={`${bookPage.leftBox} `}>
                     <img className={`${bookPage.bookPageImg}`} src={book.img} alt={book.name}/>

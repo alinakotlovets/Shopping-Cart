@@ -11,6 +11,15 @@
     position: relative;
 }
 
+
+.booksInCartBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
 .shippingInfo {
     width: 100%;
     padding: 12px 0;
@@ -24,6 +33,10 @@
     font-size: 14px;
     line-height: 18px;
     color: rgb(0, 0, 0);
+}
+
+.shippingInfoText {
+    font-size: 16px;
 }
 
 .bookBox:after {
@@ -114,3 +127,39 @@
     padding: 8px 20px 15px;
     gap: 5px;
 }
+
+.bookBoxPricingBox {
+    margin-top: 30px;
+    justify-content: space-between;
+    display: flex;
+}
+
+@media screen and (max-width: 767.9px) {
+    .pricingBox {
+        width: 100%;
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .bookBoxPricingBox {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .bookBox {
+        padding: 10px 10px 0;
+        width: 100%;
+    }
+
+    .pricingTextBox {
+        width: 60%;
+    }
+
+    .shippingInfoText {
+        font-size: 12px;
+    }
+
+}
+

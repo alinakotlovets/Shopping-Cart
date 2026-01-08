@@ -8,7 +8,7 @@ function Footer() {
 
     return (
         <div className={`${footer.footerBox}`}>
-            <div className={`${common.flex} ${common.flexSpaceBetween} ${common.with100} ${common.textAlignStart}`}>
+            <div className={`${footer.footerContentBox}`}>
                 <div className={`${common.flex} ${common.flexColumn}`}>
                     <img width="100px" height="75px" src={bookShopLogo} alt="book shop logo"/>
                     <a className={`${common.marginTop10}`} href="tel:+0123456789">0-123-456-789</a>

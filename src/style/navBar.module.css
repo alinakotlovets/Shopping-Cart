@@ -48,3 +48,189 @@
     border-radius: 0 8px 8px 0;
     padding: 6.35px 12px 6.35px 10px;
 }
+
+.canselButtonBox {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    width: 40%;
+}
+
+.canselButton {
+    background-color: var(--background-white);
+    transition: color var(--transition);
+    color: #595959;
+}
+
+
+.searchBookImg {
+    width: 100px;
+    height: 140px;
+}
+
+.searchBookBox {
+    display: flex;
+    min-width: 400px;
+    gap: 32px;
+    text-align: start;
+    justify-content: start;
+    align-items: start;
+    position: relative;
+    flex-direction: column;
+    padding: 10px 0;
+}
+
+
+.searchBookBox:after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: rgb(208, 226, 223);
+    margin-top: 5px;
+}
+
+.canselButton:focus,
+.canselButton:hover {
+    color: var(--red);
+    background-color: var(--background-white);
+}
+
+
+.notFoundBox {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 120px;
+    position: relative;
+}
+
+.notFoundBox:after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: rgb(208, 226, 223);
+    margin-top: 60px;
+}
+
+
+.leftSide {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.rightSide {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.navLinks {
+    display: flex;
+    gap: 32px;
+}
+
+.burgerBtn {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    background: transparent;
+    transition: color var(--transition);
+}
+
+.burgerBtn:focus,
+.burgerBtn:hover {
+    background-color: transparent;
+    color: var(--green);
+}
+
+.burgerBtn span {
+    width: 22px;
+    height: 2px;
+    background-color: #333;
+}
+
+.desktopSearch {
+    display: flex;
+}
+
+.mobileSearch {
+    display: none;
+    padding: 10px 16px;
+    background-color: var(--background-grey);
+}
+
+.mobileCloseBtn {
+    background-color: var(--background-grey);
+    transition: color var(--transition);
+    color: #595959;
+}
+
+.mobileCloseBtn:focus,
+.mobileCloseBtn:hover {
+    color: var(--red);
+    background-color: var(--background-grey);
+}
+
+.mobileCloseBtnBox {
+    display: none;
+}
+
+
+@media screen and (max-width: 767.9px) {
+
+    .mobileCloseBtnBox {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        width: 90%;
+    }
+
+    .canselButtonBox {
+        width: 90%;
+    }
+
+    .searchBookBox {
+        min-width: 90%;
+    }
+
+    .desktopSearch {
+        display: none;
+    }
+
+    .burgerBtn {
+        display: flex;
+    }
+
+    .navLinks {
+        position: absolute;
+        top: 50px;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--background-grey);
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px 0;
+        display: none;
+        z-index: 1000;
+    }
+
+    .navLinksOpen {
+        display: flex;
+    }
+
+    .mobileSearch {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .leftSide {
+        gap: 0;
+    }
+}

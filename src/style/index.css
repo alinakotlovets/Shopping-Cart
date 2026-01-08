@@ -40,6 +40,7 @@ body {
     font-family: "Roboto", sans-serif;
     font-style: normal;
     background-color: var(--background-white);
+    scroll-behavior: smooth;
 }
 
 h1 {
