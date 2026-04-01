@@ -1,5 +1,5 @@
 async function getBookWork(book) {
-    const response = await fetch(`https://openlibrary.org/works/${book.id}.json`);
+    const response = await fetch(`https://books-proxy.felem.pp.ua/${book.id}.json`);
     if (!response.ok) {
         throw new Error(response.status);
     }
