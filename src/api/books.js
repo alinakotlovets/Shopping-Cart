@@ -1,7 +1,7 @@
 import hashStringToNumber from "../utils/hashStringToNumber.js"
 
 async function getBooks() {
-    const response = await fetch("https://openlibrary.org/people/v4cvwz_mpk_6skg/books/want-to-read.json");
+    const response = await fetch("https://books-proxy.felem.pp.ua/people/v4cvwz_mpk_6skg/books/want-to-read.json");
     if (!response.ok) {
         throw new Error(response.status);
     }
