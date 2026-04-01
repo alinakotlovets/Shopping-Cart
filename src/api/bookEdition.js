@@ -1,5 +1,5 @@
 async function getBookEdition(book) {
-    const response = await fetch(`https://openlibrary.org/books/${book.editionId}.json`);
+    const response = await fetch(`https://books-proxy.felem.pp.ua/books/${book.editionId}.json`);
     if (!response.ok) {
         throw new Error(response.status);
     }
